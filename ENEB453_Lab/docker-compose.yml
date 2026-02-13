@@ -1,0 +1,58 @@
+services:
+  apache:
+    image: httpd:alpine
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    networks: 
+      - frontend
+      - backend
+    volumes:
+      - ./public_html:/usr/local/apache2/htdocs
+    depends_on:
+      - php
+      - mysql
+  php:
+    build: './php'
+    restart: always
+    networks: 
+      - backend
+    volumes:
+      - ./public_html:/usr/local/apache2/htdocs
+      - ./tmp:/usr/local/tmp
+  mysql:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - 3306:3306
+  nodejs:
+    build: './nodejs'
+    restart: always
+    ports:
+      - 3301:3000
+    networks:
+      - backend
+    volumes:
+      - ./tmp:/usr/local/tmp
+  mongo:
+    image: 'mongo:latest'
+    restart: always
+    ports:
+      - 27017:27017
+    networks:
+      - backend
+    environment:
+      MONGO_INITDB_DATABASE: logs
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+    volumes:
+      - ./mongo/:/data/db
+  python:
+    build: ./python
+    command: python3 ./hello_world.py
+networks: 
+  backend:
+  frontend:
