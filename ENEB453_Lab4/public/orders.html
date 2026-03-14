@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orders – ShopNest</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════════════ -->
+  <header class="site-header">
+    <nav class="navbar">
+      <a href="index.html" class="logo">Shop<span>Nest</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="orders.html" class="active">Orders</a></li>
+        <li><a href="signup.html">Sign Up</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="cart-btn" onclick="window.location.href='orders.html'">
+          🛒 <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════
+       PAGE HEADER
+  ═══════════════════════════════════════════════ -->
+  <section class="page-hero">
+    <h1>Order History</h1>
+    <p>View all orders, check status updates, and manage your purchases.</p>
+  </section>
+
+  <main class="main-content">
+
+    <!-- ─────────────────────────────────────────────
+         PLACE NEW ORDER FORM
+         TODO (Lab 4): On submit, send a POST request
+         to /api/orders with { customer_id, product_id,
+         quantity } in the JSON body.
+         Display the returned order_id and total_price.
+    ───────────────────────────────────────────── -->
+    <section class="admin-panel">
+      <h2>🛒 Place a New Order</h2>
+
+      <form class="product-form" id="orderForm" onsubmit="handleOrderSubmit(event)">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="orderCustomerId">Customer ID <span class="required">*</span></label>
+            <input type="number" id="orderCustomerId" placeholder="e.g. 1" min="1" required />
+            <small>
+              Don't know your ID? Check the
+              <!-- TODO (Lab 4): Replace this with a dropdown
+                   populated from GET /api/customers -->
+              <a href="#" onclick="loadCustomerDropdown()">customer list</a>.
+            </small>
+          </div>
+
+          <div class="form-group">
+            <label for="orderProductId">Product <span class="required">*</span></label>
+            <!-- TODO (Lab 4): Replace this input with a <select>
+                 element populated dynamically from GET /api/products.
+                 Show product name + price in each <option>. -->
+            <select id="orderProductId" required>
+              <option value="">— select a product —</option>
+              <option value="1">Laptop Pro 15 – $999.99</option>
+              <option value="2">Wireless Mouse – $29.99</option>
+              <option value="3">USB-C Hub – $49.99</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="orderQuantity">Quantity <span class="required">*</span></label>
+            <input type="number" id="orderQuantity" value="1" min="1" required />
+          </div>
+          <div class="form-group">
+            <label>Estimated Total</label>
+            <!-- TODO (Lab 4): Update this value in real-time
+                 when quantity or product changes. -->
+            <p class="estimated-total" id="estimatedTotal">$—</p>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Place Order</button>
+        </div>
+
+        <div class="form-message" id="orderMessage"></div>
+      </form>
+    </section>
+
+    <!-- ─────────────────────────────────────────────
+         ORDERS TABLE
+         TODO (Lab 4): On page load, call loadOrders()
+         which fetches GET /api/orders and renders
+         rows into #orders-tbody.
+         Each row's status dropdown should call
+         PATCH /api/orders/:id/status on change.
+         The delete button should call
+         DELETE /api/orders/:id.
+    ───────────────────────────────────────────── -->
+    <section class="orders-section">
+      <div class="section-header">
+        <h2>All Orders</h2>
+        <button class="btn btn-sm btn-outline" onclick="loadOrders()">↻ Refresh</button>
+      </div>
+
+      <div class="table-wrap">
+        <table class="orders-table" id="ordersTable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Customer</th>
+              <th>Product</th>
+              <th>Qty</th>
+              <th>Total</th>
+              <th>Status</th>
+              <th>Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="orders-tbody">
+            <!-- TODO (Lab 4): Rows are injected by orders_app.js -->
+            <tr>
+              <td colspan="8" class="empty-state">
+                <div class="spinner"></div>
+                <p>Loading orders…</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-logo">Shop<span>Nest</span></p>
+      <p class="footer-copy">ENEB453 – Web-Based Application Development · Reference Project</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script src="orders_app.js"></script>
+</body>
+</html>

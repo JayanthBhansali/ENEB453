@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShopNest – Modern E-Commerce</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════════════ -->
+  <header class="site-header">
+    <nav class="navbar">
+      <a href="index.html" class="logo">Shop<span>Nest</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="orders.html">Orders</a></li>
+        <li><a href="signup.html">Sign Up</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="cart-btn" onclick="window.location.href='orders.html'">
+          🛒 <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════
+       HERO SECTION
+  ═══════════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">New Arrivals 2025</p>
+      <h1 class="hero-title">Discover Products<br /><em>You'll Love</em></h1>
+      <p class="hero-sub">Curated tech & lifestyle essentials — delivered fast, priced fairly.</p>
+      <div class="hero-cta">
+        <a href="products.html" class="btn btn-primary">Shop Now</a>
+        <a href="orders.html" class="btn btn-outline">View Orders</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card hero-card--1">
+        <div class="hcard-img" style="background:#f0e6ff;">🖥️</div>
+        <p>Laptop Pro 15</p>
+        <strong>$999.99</strong>
+      </div>
+      <div class="hero-card hero-card--2">
+        <div class="hcard-img" style="background:#e6f4ff;">🖱️</div>
+        <p>Wireless Mouse</p>
+        <strong>$29.99</strong>
+      </div>
+      <div class="hero-card hero-card--3">
+        <div class="hcard-img" style="background:#e6fff0;">🔌</div>
+        <p>USB-C Hub</p>
+        <strong>$49.99</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       FEATURED PRODUCTS
+       TODO (Lab 4): Replace the hardcoded product
+       cards below with a dynamic fetch() call to
+       GET /api/products, then render the results.
+  ═══════════════════════════════════════════════ -->
+  <section class="section featured">
+    <div class="section-header">
+      <h2>Featured Products</h2>
+      <a href="products.html" class="see-all">See all →</a>
+    </div>
+
+    <!-- TODO: Remove this static grid and replace with
+         a <div id="featured-grid"> populated via JS   -->
+    <div class="product-grid" id="featured-grid">
+
+      <!-- Static placeholder cards (remove after Lab 4) -->
+      <div class="product-card">
+        <div class="product-badge">Best Seller</div>
+        <div class="product-img">🖥️</div>
+        <div class="product-info">
+          <h3>Laptop Pro 15</h3>
+          <p class="product-desc">High-performance laptop with 16GB RAM &amp; 512GB SSD.</p>
+          <div class="product-footer">
+            <span class="price">$999.99</span>
+            <button class="btn btn-sm btn-primary" onclick="addToCart(1)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img">🖱️</div>
+        <div class="product-info">
+          <h3>Wireless Mouse</h3>
+          <p class="product-desc">Ergonomic Bluetooth mouse, 90-day battery life.</p>
+          <div class="product-footer">
+            <span class="price">$29.99</span>
+            <button class="btn btn-sm btn-primary" onclick="addToCart(2)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img">🔌</div>
+        <div class="product-info">
+          <h3>USB-C Hub</h3>
+          <p class="product-desc">7-in-1 hub: HDMI, SD card, 3x USB-A, 2x USB-C.</p>
+          <div class="product-footer">
+            <span class="price">$49.99</span>
+            <button class="btn btn-sm btn-primary" onclick="addToCart(3)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       VALUE PROPS
+  ═══════════════════════════════════════════════ -->
+  <section class="section value-props">
+    <div class="vp-grid">
+      <div class="vp-item">
+        <span class="vp-icon">🚀</span>
+        <h4>Fast Delivery</h4>
+        <p>Orders ship within 24 hours.</p>
+      </div>
+      <div class="vp-item">
+        <span class="vp-icon">🔒</span>
+        <h4>Secure Checkout</h4>
+        <p>SSL-encrypted on every order.</p>
+      </div>
+      <div class="vp-item">
+        <span class="vp-icon">↩️</span>
+        <h4>Easy Returns</h4>
+        <p>30-day hassle-free returns.</p>
+      </div>
+      <div class="vp-item">
+        <span class="vp-icon">💬</span>
+        <h4>24/7 Support</h4>
+        <p>Always here when you need us.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-logo">Shop<span>Nest</span></p>
+      <p class="footer-copy">ENEB453 – Web-Based Application Development · Reference Project</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
