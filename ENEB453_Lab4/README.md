@@ -10,6 +10,7 @@ You are required to complete all `// TODO` sections to make the application func
 ---
 
 ## Project Structure
+You can replace the html and css files in public folder with the files you have created in the earlier labs.
 
 ```
 ENEB453_Lab4/
@@ -24,7 +25,7 @@ ENEB453_Lab4/
 │   ├── orders_app.js        - Orders page logic     // TODO
 │   └── signup_app.js        - Signup page logic     // TODO
 ├── routes/
-│   ├── customers.js         - Customer CRUD routes  // TODO
+│   ├── customers.js         - Customer CRUD routes 
 │   ├── products.js          - Product CRUD routes   // TODO
 │   └── orders.js            - Order CRUD routes     // TODO
 ├── db/
@@ -77,10 +78,11 @@ Navigate to **http://localhost:3000** in your browser.
 
 Every `// TODO` comment marks a section students must implement:
 
+CRUD operations are performed in customer.js file. You can refer to perform the operations in products.js and orders.js files
+
 | File | Task |
 |------|------|
 | `server.js` | Uncomment the route imports and `app.use()` lines |
-| `routes/customers.js` | Implement all 5 CRUD endpoints |
 | `routes/products.js` | Implement all 5 CRUD endpoints |
 | `routes/orders.js` | Implement all 5 CRUD endpoints (including JOIN queries) |
 | `public/product_app.js` | Replace placeholder calls with real `apiFetch()` calls |

@@ -9,7 +9,7 @@ const express = require('express');
 const router  = express.Router();
 const pool    = require('../db/connection');
 
-// ── GET /api/products ────────────────────────────────────────────
+// GET /api/products
 // Return ALL products. Supports optional ?search= query param.
 router.get('/', async (req, res) => {
   try {
@@ -34,7 +34,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// ── GET /api/products/:id ────────────────────────────────────────
+// GET /api/products/:id
 // Return a SINGLE product by product_id.
 router.get('/:id', async (req, res) => {
   try {
@@ -47,7 +47,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// ── POST /api/products ───────────────────────────────────────────
+// POST /api/products
 // Create a NEW product.
 router.post('/', async (req, res) => {
   try {
@@ -63,7 +63,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// ── PUT /api/products/:id ────────────────────────────────────────
+// PUT /api/products/:id
 // Update an EXISTING product.
 router.put('/:id', async (req, res) => {
   try {
@@ -79,7 +79,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// ── DELETE /api/products/:id ─────────────────────────────────────
+// DELETE /api/products/:id 
 // Delete a product (and cascade-deletes related orders).
 router.delete('/:id', async (req, res) => {
   try {

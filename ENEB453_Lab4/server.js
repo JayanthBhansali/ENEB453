@@ -18,13 +18,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes 
 // TODO (Lab 4): Uncomment these lines after creating the route files.
-// const customerRoutes = require('./routes/customers');
-// const productRoutes  = require('./routes/products');
-// const orderRoutes    = require('./routes/orders');
+const customerRoutes = require('./routes/customers');
+const productRoutes  = require('./routes/products');
+const orderRoutes    = require('./routes/orders');
 
-// app.use('/api/customers', customerRoutes);
-// app.use('/api/products',  productRoutes);
-// app.use('/api/orders',    orderRoutes);
+app.use('/api/customers', customerRoutes);
+app.use('/api/products',  productRoutes);
+app.use('/api/orders',    orderRoutes);
 
 // Health Check
 app.get('/api/status', (req, res) => {

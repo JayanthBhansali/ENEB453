@@ -9,7 +9,7 @@ const express = require('express');
 const router  = express.Router();
 const pool    = require('../db/connection');
 
-// ── GET /api/orders ──────────────────────────────────────────────
+// GET /api/orders
 // Return ALL orders with customer + product details (JOIN).
 router.get('/', async (req, res) => {
   try {
@@ -30,7 +30,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// ── GET /api/orders/:id ──────────────────────────────────────────
+// GET /api/orders/:id
 // Return a SINGLE order with full JOIN details.
 router.get('/:id', async (req, res) => {
   try {
@@ -43,7 +43,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// ── POST /api/orders ─────────────────────────────────────────────
+// POST /api/orders
 // Place a NEW order.
 router.post('/', async (req, res) => {
   try {
@@ -65,7 +65,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// ── PATCH /api/orders/:id/status ─────────────────────────────────
+// PATCH /api/orders/:id/status
 // Update ONLY the status field of an order.
 router.patch('/:id/status', async (req, res) => {
   const VALID_STATUSES = ['pending', 'confirmed', 'shipped', 'delivered', 'cancelled'];
@@ -83,7 +83,7 @@ router.patch('/:id/status', async (req, res) => {
   }
 });
 
-// ── DELETE /api/orders/:id ───────────────────────────────────────
+// DELETE /api/orders/:id
 // Delete (cancel) an order.
 router.delete('/:id', async (req, res) => {
   try {
