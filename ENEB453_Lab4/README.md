@@ -83,7 +83,7 @@ CRUD operations are performed in customer.js file. You can refer to perform the 
 | File | Task |
 |------|------|
 | `server.js` | Uncomment the route imports and `app.use()` lines |
-| `mysql/init.sql` | Add sample data in all tables |
+| `mysql/init.sql` | Create customer, products, and orders table and add sample data in all tables |
 | `routes/products.js` | Implement all 5 CRUD endpoints |
 | `routes/orders.js` | Implement all 5 CRUD endpoints (including JOIN queries) |
 | `public/product_app.js` | Replace placeholder calls with real `apiFetch()` calls |
